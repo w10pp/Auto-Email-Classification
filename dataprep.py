@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 23 18:41:45 2019
-
-@author: yilinwang
-"""
 # Import packages
 import pandas as pd
 import email
 
 # Load the Data
-df = pd.read_csv('/Users/yilinwang/Desktop/emails.csv')
+df = pd.read_csv('emails.csv')
 # try with first 20 rows of data
 # df = df[:20]
 df_copy = df.copy()
@@ -50,16 +45,4 @@ df_copy.drop(['message',
 
 # save dataframe into csv file
 df_copy.to_csv('dataprep.csv')
-
-
-
-
-
-
-        
-
-
-
-
-
 
