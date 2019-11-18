@@ -3,7 +3,7 @@
 """
 Created on Mon ----
 
-@author: ylw
+@author: w10
 """
 import pandas as pd
 
@@ -19,11 +19,16 @@ language_client = language.LanguageServiceClient()
 
 # calculate the sentiment scores
 def get_sentiment_scores(content):
-    document = types.Document(content=content, type=enums.Document.Type.PLAIN_TEXT)
-    sentiments = language_client.analyze_sentiment(document=document)
-    score = sentiments.document_sentiment.score
-    magnitude = sentiments.document_sentiment.magnitude
-    
+    try:
+        document = types.Document(content=content, type=enums.Document.Type.PLAIN_TEXT)
+        sentiments = language_client.analyze_sentiment(document=document)
+        score = sentiments.document_sentiment.score
+        magnitude = sentiments.document_sentiment.magnitude
+        
+    except:
+        score = 'na'
+        magnitude = 'nan'
+        
     print(score, magnitude)
     
     return pd.Series([score, magnitude])
