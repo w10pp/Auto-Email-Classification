@@ -47,8 +47,13 @@ df_senti = pd.concat([df_1, df_sentiscore], axis = 1)
 
 
 def get_top_entities(content):
-    document = types.Document(content=content, type=enums.Document.Type.PLAIN_TEXT)
-    entities = language_client.analyze_entities(document=document)
+    try:
+        document = types.Document(content=content, type=enums.Document.Type.PLAIN_TEXT)
+        entities = language_client.analyze_entities(document=document)
+        print(entities.entities[:5])
+        
+    else:
+        return 'None'
     
     return ', '.join([e.name for e in entities.entities[:5]])
 
